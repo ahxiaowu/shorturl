@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>短网址</title>
+<script src="http://www.28.com/js/jquery.js"></script>
+<style>
+body{
+font-size: 14px;
+margin: 0px;
+padding: 0px;
+}
+div{
+width: 800px;
+margin: 0px auto;
+}
+#oriurl{
+width: 500px;
+height: 30px;
+line-height: 30px;
+}
+#sub{
+width: 200px;
+height: 36px;
+line-height: 36px;
+}
+#outmsg{
+	color: green;
+	margin-top: 10px auto;
+	border: 1px #ccc solid;
+	width: 700px;
+	height: 50px;
+	line-height: 50px;
+}
+</style>
+<script>
+var http = 'http://192.168.201.71/shorturl/';
+$(function(){
+	$('#sub').click(function(event) {
+		var oriurl = $('#oriurl').val();
+		$.post('./api.php',{oriurl:oriurl}, function(msg) {
+			$('#outmsg').html(http+msg);
+		});
+	});
+});
+</script>
+</head>
+
+<body>
+<div>
+	<h3>短网址生成</h3>
+	<input type="text" name="oriurl" id="oriurl" />
+	<input type="button" id="sub" value=" 生成知网址 " />
+	<p id="outmsg"></p>
+</div>
+</body>
+</html>
